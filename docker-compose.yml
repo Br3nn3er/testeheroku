@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  db:
+    container_name: postgres_db
+    image: postgres:14.4-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=disciplinas
+      - POSTGRES_PASSWORD=a1s2d3
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules
+      - ./src:/app/src
+    ports:
+      - "3333:3333"
+  pgadmin-compose:
+    container_name: prac_db_ui
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pgadmin@megacorp.com"
+      PGADMIN_DEFAULT_PASSWORD: "s3kr1t_p455w0rd"
+    ports:
+      - "16543:80"
+    depends_on:
+      - db
