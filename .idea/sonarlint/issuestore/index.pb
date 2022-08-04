@@ -1,0 +1,27 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+y
+Isrc/modules/dinamica/services/HandleEtapaService/HandleEtapaController.ts,a\0\a0b6220ce085b15ba95e1df9e1961f7229040f0c
+v
+Fsrc/modules/dinamica/services/HandleEtapaService/HandleEtapaService.ts,5\f\5fb38cba1defa5533375bd1299b3b22016480dcd
+Å
+Qsrc/modules/dinamica/services/HandleFilaTurmaService/HandleFilaTurmaController.ts,9\6\96e6da79ae978a8429710e48d98daaf4a2481df4
+y
+Isrc/modules/dinamica/infra/typeorm/repositories/FilaTurmaNewRepository.ts,a\2\a27ae133bed549c7f3f2810606afaaa114bd3400
+s
+Csrc/modules/dinamica/infra/typeorm/repositories/OfertaRepository.ts,d\0\d0293722cb7ac8d9e965e048f03c1140c2967ee0
+q
+Asrc/modules/dinamica/infra/typeorm/repositories/FilaRepository.ts,7\0\705151473279251dd9603a85c388ef46f13bb242
+h
+8src/modules/dinamica/infra/typeorm/entities/FilaTurma.ts,7\1\7130f7b27259544393fd695e64ed5b2aa1ea46ba
+v
+Fsrc/modules/dinamica/infra/typeorm/repositories/FilaTurmaRepository.ts,a\8\a80a6d27cc9c2f8d5aea380269d19d5110fe68e1
+~
+Nsrc/modules/dinamica/services/HandleFilaTurmaService/HandleFilaTurmaService.ts,4\d\4dc0d1d394bca729e820206c314840da763bf870
+`
+0src/modules/dinamica/dtos/ICreateFilaTurmaDTO.ts,9\a\9a9170c889e04602d0de8a42d39e97f6ed870f7c
+~
+Nsrc/modules/dinamica/infra/typeorm/repositories/interfaces/IEtapaRepository.ts,9\4\947e3619d8df871f2c8e77d23a5a4e2f12830712
+Ç
+Rsrc/modules/dinamica/infra/typeorm/repositories/interfaces/IFilaTurmaRepository.ts,5\4\542134b01904019c4ddb592e6ebb78a8910366d6

@@ -1,0 +1,13 @@
+
+€typescript:S14884"]Immediately return this expression instead of assigning it to the temporary variable "filas".(×Ã¢ô8¶¾ÂÁ—0
+„typescript:S1172="aRemove the unused function parameter "siape" or rename it to "_siape" to make intention explicit.(Ş§Œ†8·¾ÂÁ—0
+•typescript:S1172?"mRemove the unused function parameter "codigo_disc" or rename it to "_codigo_disc" to make intention explicit.(›¿µşûÿÿÿÿ8íò¿Á—0
+„typescript:S1172@"aRemove the unused function parameter "turma" or rename it to "_turma" to make intention explicit.(œòÜ³8íò¿Á—0
+€typescript:S1172A"]Remove the unused function parameter "pos" or rename it to "_pos" to make intention explicit.(ÿÉ›»8¸¾ÂÁ—0
+›typescript:S1172C"sRemove the unused function parameter "qte_ministrada" or rename it to "_qte_ministrada" to make intention explicit.(ÿ€öéûÿÿÿÿ8îò¿Á—0
+typescript:S1172D"kRemove the unused function parameter "qte_maximo" or rename it to "_qte_maximo" to make intention explicit.(ç‹ÇX8îò¿Á—0
+‹typescript:S1172E"cRemove the unused function parameter "status" or rename it to "_status" to make intention explicit.(½¥Ÿ½ûÿÿÿÿ8îò¿Á—0
+~typescript:S1172F"[Remove the unused function parameter "ch" or rename it to "_ch" to make intention explicit.(À¹Ò8îò¿Á—0
+~typescript:S1172G"[Remove the unused function parameter "id" or rename it to "_id" to make intention explicit.(Çàñ8îò¿Á—0
+§typescript:S1172H"Remove the unused function parameter "periodo_preferencial" or rename it to "_periodo_preferencial" to make intention explicit.(Ò˜‘Õûÿÿÿÿ8¹¾ÂÁ—0
+†typescript:S1488R"cImmediately return this expression instead of assigning it to the temporary variable "filaUpdated".(©ç¼8£ûºÁ—0
