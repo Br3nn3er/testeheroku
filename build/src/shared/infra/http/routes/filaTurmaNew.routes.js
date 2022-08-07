@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.filaTurmaNewRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleFilaTurmaNewController_1 = require("../../../../modules/dinamica/services/HandleFilaTurmaNewService/HandleFilaTurmaNewController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var filaTurmaNewRoutes = express_1.Router();
+exports.filaTurmaNewRoutes = filaTurmaNewRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleFilaTurmaNewController = new HandleFilaTurmaNewController_1.HandleFilaTurmaNewController();
+filaTurmaNewRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleFilaTurmaNewController.create);
+filaTurmaNewRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleFilaTurmaNewController.update);
+filaTurmaNewRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleFilaTurmaNewController.read);
+filaTurmaNewRoutes.get("/professor/:siape/semestre/:semestreId", ensureAuthenticated_1.ensureAuthenticated, handleFilaTurmaNewController.readByProfessorAndSemestreId);
+filaTurmaNewRoutes.get("/turma/:turmaID", ensureAuthenticated_1.ensureAuthenticated, handleFilaTurmaNewController.readByTurma);
+filaTurmaNewRoutes.delete("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleFilaTurmaNewController.delete);
+filaTurmaNewRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleFilaTurmaNewController.import);

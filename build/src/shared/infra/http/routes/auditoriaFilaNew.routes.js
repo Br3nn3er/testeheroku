@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.auditoriaFilaNewRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleAuditoriaFilaNewController_1 = require("../../../../modules/dinamica/services/HandleAuditoriaFilaNewService/HandleAuditoriaFilaNewController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var auditoriaFilaNewRoutes = express_1.Router();
+exports.auditoriaFilaNewRoutes = auditoriaFilaNewRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleAuditoriaFilaNewController = new HandleAuditoriaFilaNewController_1.HandleAuditoriaFilaNewController();
+auditoriaFilaNewRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleAuditoriaFilaNewController.create);
+auditoriaFilaNewRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleAuditoriaFilaNewController.update);
+auditoriaFilaNewRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleAuditoriaFilaNewController.read);
+auditoriaFilaNewRoutes.delete("/:id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleAuditoriaFilaNewController.delete);
+auditoriaFilaNewRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleAuditoriaFilaNewController.import);

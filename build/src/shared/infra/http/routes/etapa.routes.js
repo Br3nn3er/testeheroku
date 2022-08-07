@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.etapaRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleEtapaController_1 = require("../../../../modules/dinamica/services/HandleEtapaService/HandleEtapaController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var etapaRoutes = express_1.Router();
+exports.etapaRoutes = etapaRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleEtapaController = new HandleEtapaController_1.HandleEtapaController();
+etapaRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleEtapaController.create);
+etapaRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleEtapaController.update);
+etapaRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleEtapaController.read);
+etapaRoutes.delete("/:id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleEtapaController.delete);
+etapaRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleEtapaController.import);

@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.usersRoutes = void 0;
+var express_1 = require("express");
+var HandleUserController_1 = require("../../../../modules/gerenciamento/services/HandleUserService/HandleUserController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var usersRoutes = express_1.Router();
+exports.usersRoutes = usersRoutes;
+var handleUserController = new HandleUserController_1.HandleUserController();
+usersRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleUserController.create);
+usersRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleUserController.list);
+usersRoutes.get("/me", ensureAuthenticated_1.ensureAuthenticated, handleUserController.findUser);
+usersRoutes.get("/:id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleUserController.findById);
+usersRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleUserController.update);
+usersRoutes.delete("/:id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleUserController.delete);

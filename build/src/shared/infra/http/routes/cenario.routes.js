@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.cenarioRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleCenarioController_1 = require("../../../../modules/dinamica/services/HandleCenarioService/HandleCenarioController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var cenarioRoutes = express_1.Router();
+exports.cenarioRoutes = cenarioRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleCenarioController = new HandleCenarioController_1.HandleCenarioController();
+cenarioRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioController.create);
+cenarioRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioController.read);
+cenarioRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioController.update);
+cenarioRoutes.delete("/:num_cenario", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioController.delete);
+cenarioRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioController.import);

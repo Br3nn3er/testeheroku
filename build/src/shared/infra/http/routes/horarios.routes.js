@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.horariosRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleHorarioController_1 = require("../../../../modules/estrutura/services/HandleHorarioService/HandleHorarioController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var horariosRoutes = express_1.Router();
+exports.horariosRoutes = horariosRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleHorarioController = new HandleHorarioController_1.HandleHorarioController();
+horariosRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleHorarioController.create);
+horariosRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleHorarioController.update);
+horariosRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleHorarioController.read);
+horariosRoutes.delete("/:letra", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleHorarioController.delete);
+horariosRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleHorarioController.import);

@@ -38,6 +38,14 @@ class RestricoesRepositoryTestMock implements IRestricoesRepository {
     return restricoes;
   }
 
+  async queryBySiape(siape: string): Promise<Restricoes[]> {
+    const restricoes = this.restricoesList.filter(
+      (restricoesToSearch) => restricoesToSearch.siape === siape
+    );
+
+    return restricoes;
+  }
+
   async deleteBySiapeEDiaELetra(
     siape: string,
     dia: string,

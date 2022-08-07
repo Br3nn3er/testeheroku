@@ -12,7 +12,6 @@ import { DistribuicaoCargaRepository } from "../../modules/dinamica/infra/typeor
 import { DistribuicoesPossibilidadeRepository } from "../../modules/dinamica/infra/typeorm/repositories/DistribuicoesPossibilidadeRepository";
 import { EtapaRepository } from "../../modules/dinamica/infra/typeorm/repositories/EtapaRepository";
 import { FilaRepository } from "../../modules/dinamica/infra/typeorm/repositories/FilaRepository";
-import { FilaTurmaRepository } from "../../modules/dinamica/infra/typeorm/repositories/FilaTurmaRepository";
 import { FilaTurmaNewRepository } from "../../modules/dinamica/infra/typeorm/repositories/FilaTurmaNewRepository";
 import { IAtribuicaoManualRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IAtribuicaoManualRepository";
 import { IAuditoriaFilaNewRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IAuditoriaFilaNewRepository";
@@ -24,7 +23,6 @@ import { IDistribuicaoCargaRepository } from "../../modules/dinamica/infra/typeo
 import { IDistribuicoesPossibilidadeRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IDistribuicoesPossibilidadeRepository";
 import { IEtapaRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IEtapaRepository";
 import { IFilaRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IFilaRepository";
-import { IFilaTurmaRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IFilaTurmaRepository";
 import { IFilaTurmaNewRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IFilaTurmaNewRepository";
 import { IOfertaRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IOfertaRepository";
 import { IPossibilidadesRepository } from "../../modules/dinamica/infra/typeorm/repositories/interfaces/IPossibilidadesRepository";
@@ -182,8 +180,6 @@ container.registerSingleton<IDistribuicoesPossibilidadeRepository>(
 );
 
 container.registerSingleton<IFilaRepository>("FilaRepository", FilaRepository);
-
-container.registerSingleton<IFilaTurmaRepository>("FilaTurmaRepository", FilaTurmaRepository);
 
 container.registerSingleton<IFilaTurmaNewRepository>(
   "FilaTurmaNewRepository",

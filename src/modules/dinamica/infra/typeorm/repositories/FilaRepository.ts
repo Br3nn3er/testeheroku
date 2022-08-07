@@ -3,11 +3,10 @@ import { getRepository, Repository } from "typeorm";
 import { ICreateFilaDTO, IPatchFilaDTO } from "../../../dtos/ICreateFilaDTO";
 import { Fila } from "../entities/Fila";
 import { IFilaRepository } from "./interfaces/IFilaRepository";
-import {FilaTurma} from "../entities/FilaTurma";
-import {Professor} from "../../../../estrutura/infra/typeorm/entities/Professor";
-import {FilaTurmaNew} from "../entities/FilaTurmaNew";
-import {Turma} from "../../../../estrutura/infra/typeorm/entities/Turma";
-import {Disciplina} from "../../../../estrutura/infra/typeorm/entities/Disciplina";
+import { Professor } from "../../../../estrutura/infra/typeorm/entities/Professor";
+import { FilaTurmaNew } from "../entities/FilaTurmaNew";
+import { Turma } from "../../../../estrutura/infra/typeorm/entities/Turma";
+import { Disciplina } from "../../../../estrutura/infra/typeorm/entities/Disciplina";
 
 class FilaRepository implements IFilaRepository {
   private repository: Repository<Fila>;
@@ -117,34 +116,32 @@ class FilaRepository implements IFilaRepository {
     ano: number,
     semestre: number
   ): Promise<Fila[]> {
-      const filaFinded = await getRepository(Fila)
-        .createQueryBuilder("fl")
-        .select("dp.codigo", "codigo_disciplina")
-        .addSelect("dp.nome", "nome_disciplina")
-        .addSelect("tm.turma", "turma")
-        .addSelect("fl.pos","posicao")
-        .addSelect("fl.prioridade", "prioridade")
-        .addSelect("fl.qte_ministrada", "qte_ministrada")
-        .addSelect("fl.qte_maximo", "qte_maximo")
-        .leftJoin(FilaTurmaNew, "ftn", "ftn.id_fila = fl.id")
-        .leftJoin(Turma, "tm", "tm.id = ftn.id_turma")
-        .leftJoin(Disciplina, "dp", "fl.codigo_disc = dp.codigo")
-        .where("fl.siape = :siape", { siape })
-        .andWhere("tm.ano = :ano", { ano })
-        .andWhere("tm.semestre = :semestre", { semestre })
-        .orderBy("fl.prioridade", "DESC")
-        .getRawMany();
+    const filaFinded = await getRepository(Fila)
+      .createQueryBuilder("fl")
+      .select("dp.codigo", "codigo_disciplina")
+      .addSelect("dp.nome", "nome_disciplina")
+      .addSelect("tm.turma", "turma")
+      .addSelect("fl.pos", "posicao")
+      .addSelect("fl.prioridade", "prioridade")
+      .addSelect("fl.qte_ministrada", "qte_ministrada")
+      .addSelect("fl.qte_maximo", "qte_maximo")
+      .leftJoin(FilaTurmaNew, "ftn", "ftn.id_fila = fl.id")
+      .leftJoin(Turma, "tm", "tm.id = ftn.id_turma")
+      .leftJoin(Disciplina, "dp", "fl.codigo_disc = dp.codigo")
+      .where("fl.siape = :siape", { siape })
+      .andWhere("tm.ano = :ano", { ano })
+      .andWhere("tm.semestre = :semestre", { semestre })
+      .orderBy("fl.prioridade", "DESC")
+      .getRawMany();
 
-      return filaFinded;
-    }
+    return filaFinded;
+  }
 
-  async queryByTurma(
-    turma: number
-  ): Promise<Fila[]> {
+  async queryByTurma(turma: number): Promise<Fila[]> {
     const filaFinded = await getRepository(Fila)
       .createQueryBuilder("fl")
       .select("pf.nome", "nome_professor")
-      .addSelect("fl.pos","posicao")
+      .addSelect("fl.pos", "posicao")
       .addSelect("fl.prioridade", "prioridade")
       .addSelect("fl.qte_ministrada", "qte_ministrada")
       .addSelect("fl.qte_maximo", "qte_maximo")

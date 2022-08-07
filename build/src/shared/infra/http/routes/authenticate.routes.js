@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.authenticateRoutes = void 0;
+var express_1 = require("express");
+var HandleRefreshTokenController_1 = require("../../../../modules/gerenciamento/services/handleRefreshTokenService/HandleRefreshTokenController");
+var HandleUserController_1 = require("../../../../modules/gerenciamento/services/HandleUserService/HandleUserController");
+var authenticateRoutes = express_1.Router();
+exports.authenticateRoutes = authenticateRoutes;
+var authenticateUserController = new HandleUserController_1.HandleUserController();
+var handleRefreshTokenController = new HandleRefreshTokenController_1.HandleRefreshTokenController();
+authenticateRoutes.post("/sessions", authenticateUserController.authenticate);
+authenticateRoutes.post("/refresh-token", handleRefreshTokenController.refresh);

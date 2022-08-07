@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.semestresRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleSemestreController_1 = require("../../../../modules/estrutura/services/HandleSemestreService/HandleSemestreController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var semestresRoutes = express_1.Router();
+exports.semestresRoutes = semestresRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleSemestreController = new HandleSemestreController_1.HandleSemestreController();
+semestresRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleSemestreController.create);
+semestresRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, handleSemestreController.read);
+semestresRoutes.get("/:id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleSemestreController.readById);
+semestresRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleSemestreController.update);
+semestresRoutes.delete("/:id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleSemestreController.delete);
+semestresRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleSemestreController.import);

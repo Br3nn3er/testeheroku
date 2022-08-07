@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.cenarioFilaTurmaRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleCenarioFilaTurmaController_1 = require("../../../../modules/dinamica/services/HandleCenarioFilaTurmaService/HandleCenarioFilaTurmaController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var cenarioFilaTurmaRoutes = express_1.Router();
+exports.cenarioFilaTurmaRoutes = cenarioFilaTurmaRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleCenarioFilaTurmaController = new HandleCenarioFilaTurmaController_1.HandleCenarioFilaTurmaController();
+cenarioFilaTurmaRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioFilaTurmaController.create);
+cenarioFilaTurmaRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioFilaTurmaController.update);
+cenarioFilaTurmaRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioFilaTurmaController.read);
+cenarioFilaTurmaRoutes.delete("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioFilaTurmaController.delete);
+cenarioFilaTurmaRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleCenarioFilaTurmaController.import);

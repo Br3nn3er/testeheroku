@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.distRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var HandleDistribuicaoCargaController_1 = require("../../../../modules/dinamica/services/HandleDistribuicaoCargaService/HandleDistribuicaoCargaController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var distRoutes = express_1.Router();
+exports.distRoutes = distRoutes;
+var upload = multer_1.default({ dest: "./tmp" });
+var handleDistribuicaoCargaController = new HandleDistribuicaoCargaController_1.HandleDistribuicaoCargaController();
+distRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicaoCargaController.create);
+distRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicaoCargaController.read);
+distRoutes.patch("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicaoCargaController.update);
+distRoutes.delete("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicaoCargaController.delete);
+distRoutes.post("/import", upload.single("file"), ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicaoCargaController.import);

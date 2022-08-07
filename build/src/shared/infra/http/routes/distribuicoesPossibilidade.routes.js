@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.distPossibilidadeRoutes = void 0;
+var express_1 = require("express");
+var HandleDistribuicoesPossibilidadeController_1 = require("../../../../modules/dinamica/services/HandleDistribuicoesPossibilidadeService/HandleDistribuicoesPossibilidadeController");
+var ensureAdmin_1 = require("../middlewares/ensureAdmin");
+var ensureAuthenticated_1 = require("../middlewares/ensureAuthenticated");
+var distPossibilidadeRoutes = express_1.Router();
+exports.distPossibilidadeRoutes = distPossibilidadeRoutes;
+var handleDistribuicoesPossibilidadeController = new HandleDistribuicoesPossibilidadeController_1.HandleDistribuicoesPossibilidadeController();
+distPossibilidadeRoutes.post("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicoesPossibilidadeController.create);
+distPossibilidadeRoutes.get("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicoesPossibilidadeController.read);
+distPossibilidadeRoutes.delete("/", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, handleDistribuicoesPossibilidadeController.delete);
