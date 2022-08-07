@@ -74,6 +74,15 @@ var RestricoesRepositoryTestMock = /** @class */ (function () {
             });
         });
     };
+    RestricoesRepositoryTestMock.prototype.queryBySiape = function (siape) {
+        return __awaiter(this, void 0, void 0, function () {
+            var restricoes;
+            return __generator(this, function (_a) {
+                restricoes = this.restricoesList.filter(function (restricoesToSearch) { return restricoesToSearch.siape === siape; });
+                return [2 /*return*/, restricoes];
+            });
+        });
+    };
     RestricoesRepositoryTestMock.prototype.deleteBySiapeEDiaELetra = function (siape, dia, letra) {
         return __awaiter(this, void 0, void 0, function () {
             var restricoesIndex;

@@ -37,6 +37,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
+// require("dotenv").config();
+var config = {
+    type: "postgres",
+    // url: process.env.DATABASE_URL,
+    host: process.env.TYPEORM_HOST,
+    port: process.env.TYPEORM_PORT || 5432,
+    username: process.env.TYPEORM_USERNAME,
+    password: process.env.TYPEORM_PASSWORD,
+    database: process.env.TYPEORM_DATABASE,
+    synchronize: process.env.TYPEORM_SYNCHRONIZE,
+    logging: true,
+    migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
+    entities: ["./src/modules/**/entities/*.ts"],
+    cli: {
+        migrationsDir: "./src/shared/infra/typeorm/migrations",
+    },
+};
 exports.default = (function (host) {
     if (host === void 0) { host = "localhost"; }
     return __awaiter(void 0, void 0, void 0, function () {
@@ -46,7 +63,7 @@ exports.default = (function (host) {
                 case 0: return [4 /*yield*/, typeorm_1.getConnectionOptions()];
                 case 1:
                     defaultOptions = _a.sent();
-                    return [2 /*return*/, typeorm_1.createConnection(Object.assign(defaultOptions, {
+                    return [2 /*return*/, typeorm_1.createConnection(Object.assign(config, {
                             host: host,
                             database: process.env.NODE_ENV === "test"
                                 ? "disciplinas_test"
