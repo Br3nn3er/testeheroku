@@ -1,10 +1,10 @@
 {
   "type": "postgres",
   "port": 5432,
-  "host": "localhost",
-  "username": "postgres",
-  "password": "a1s2d3",
-  "database": "disciplinas",
+  "host": "ec2-54-161-255-125.compute-1.amazonaws.com",
+  "username": "bnpfketejmiqqq",
+  "password": "ce250004582f84cb3e5a221049a6d4869eec99ae1ad825f29a1515ee83b2480a",
+  "database": "dbl458ndstn7uk",
   "logging": true,
   "migrations": [
     "./src/shared/infra/typeorm/migrations/*.ts"
