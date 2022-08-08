@@ -6,6 +6,12 @@
   "password": "ce250004582f84cb3e5a221049a6d4869eec99ae1ad825f29a1515ee83b2480a",
   "database": "dbl458ndstn7uk",
   "logging": true,
+  "extra": {
+    "ssl": {
+      "require": true,
+      "rejectUnauthorized": false
+    }
+  },
   "migrations": [
     "./src/shared/infra/typeorm/migrations/*.ts"
   ],
