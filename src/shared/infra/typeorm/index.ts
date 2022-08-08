@@ -17,7 +17,9 @@ const config: any = {
     migrationsDir: "./src/shared/infra/typeorm/migrations",
   },
 };
-export default async (host = "localhost"): Promise<Connection> => {
+export default async (
+  host = config.host || "localhost"
+): Promise<Connection> => {
   const defaultOptions = await getConnectionOptions();
 
   return createConnection(
