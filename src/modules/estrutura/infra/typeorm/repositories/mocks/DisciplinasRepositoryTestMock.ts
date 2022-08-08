@@ -50,6 +50,14 @@ class DisciplinasRepositoryTestMock implements IDisciplinasRepository {
     return disciplina;
   }
 
+  async queryBySiapeEAnoESemestre(
+    siape: string,
+    ano: number,
+    semestre: number
+  ): Promise<Disciplina[]> {
+    throw new Error("Method not implemented.");
+  }
+
   async updateByCodigo({
     codigo,
     nome,

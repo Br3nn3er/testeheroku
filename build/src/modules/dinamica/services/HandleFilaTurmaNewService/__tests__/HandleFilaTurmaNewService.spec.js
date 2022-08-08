@@ -42,9 +42,11 @@ var HandleFilaTurmaNewService_1 = require("../HandleFilaTurmaNewService");
 describe("Handle CRUD operations related to fila_turma_new", function () {
     var filaRepositoryTest;
     var handleFilaTurmaNewService;
+    var semestreRepositoryTest;
+    var handleSemestreService;
     beforeEach(function () {
         filaRepositoryTest = new FilaTurmaNewRepositoryTestMock_1.FilaTurmaNewRepositoryTestMock();
-        handleFilaTurmaNewService = new HandleFilaTurmaNewService_1.HandleFilaTurmaNewService(filaRepositoryTest);
+        handleFilaTurmaNewService = new HandleFilaTurmaNewService_1.HandleFilaTurmaNewService(filaRepositoryTest, semestreRepositoryTest);
     });
     it("Should be able to create a new fila_turma_new record", function () { return __awaiter(void 0, void 0, void 0, function () {
         var fila;

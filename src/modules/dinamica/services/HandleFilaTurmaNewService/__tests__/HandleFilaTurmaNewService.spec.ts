@@ -1,15 +1,19 @@
 import { AppError } from "../../../../../shared/errors/AppError";
+import { SemestresRepositoryTestMock } from "../../../../estrutura/infra/typeorm/repositories/mocks/SemestresRepositoryTestMock";
+import { HandleSemestreService } from "../../../../estrutura/services/HandleSemestreService/HandleSemestreService";
 import { FilaTurmaNewRepositoryTestMock } from "../../../infra/typeorm/repositories/mocks/FilaTurmaNewRepositoryTestMock";
 import { HandleFilaTurmaNewService } from "../HandleFilaTurmaNewService";
 
 describe("Handle CRUD operations related to fila_turma_new", () => {
   let filaRepositoryTest: FilaTurmaNewRepositoryTestMock;
   let handleFilaTurmaNewService: HandleFilaTurmaNewService;
-
+  let semestreRepositoryTest: SemestresRepositoryTestMock;
+  let handleSemestreService: HandleSemestreService;
   beforeEach(() => {
     filaRepositoryTest = new FilaTurmaNewRepositoryTestMock();
     handleFilaTurmaNewService = new HandleFilaTurmaNewService(
-      filaRepositoryTest
+      filaRepositoryTest,
+      semestreRepositoryTest
     );
   });
 

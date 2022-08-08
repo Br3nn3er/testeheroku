@@ -80,6 +80,13 @@ var DisciplinasRepositoryTestMock = /** @class */ (function () {
             });
         });
     };
+    DisciplinasRepositoryTestMock.prototype.queryBySiapeEAnoESemestre = function (siape, ano, semestre) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                throw new Error("Method not implemented.");
+            });
+        });
+    };
     DisciplinasRepositoryTestMock.prototype.updateByCodigo = function (_a) {
         var codigo = _a.codigo, nome = _a.nome, ch_teorica = _a.ch_teorica, ch_pratica = _a.ch_pratica, ch_total = _a.ch_total, curso = _a.curso, temfila = _a.temfila, periodo = _a.periodo;
         return __awaiter(this, void 0, void 0, function () {

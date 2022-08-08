@@ -49,6 +49,8 @@ class Disciplina {
 
   @CreateDateColumn()
   created_at: Date;
+  siape: string;
+  ano: number;
 }
 
 export { Disciplina };
