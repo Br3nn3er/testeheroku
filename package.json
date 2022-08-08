@@ -11,7 +11,7 @@
     "type:check": "./node_modules/.bin/tsc -p . --noEmit --skipLibCheck",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seeds/admin.ts",
-    "start": "ts-node ./build/src/shared/infra/http/server",
+    "start:prod": "ts-node ./build/src/shared/infra/http/server",
     "build": "tsc"
   },
   "dependencies": {
